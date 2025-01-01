@@ -16,10 +16,14 @@ RENAME COLUMN ï»¿order_number TO order_number;
 ```
 
 -- convert text to date type
+```SQL
 ALTER TABLE products
 MODIFY COLUMN order_date DATE ;
+```
 
+```SQL
 DESC products;
+```
 ------------------------------------------------------
 
 
@@ -28,7 +32,7 @@ DESC products;
 
 ### CUSTOMER ANALYTICS SECTION
 #### 1. What is the total number of customers by region
-
+```SQL
 SELECT 
 	CASE
 		WHEN country IN ('USA', 'Canada') THEN 'North America'
@@ -44,9 +48,10 @@ FROM
     customers
 GROUP BY region
 ORDER BY total_customers DESC;
+```
 
 #### 2. What are the top 10 cities with the most customers?
-
+```SQL
 SELECT 
     city, COUNT(DISTINCT customer_name) AS customer_in_city
 FROM
@@ -54,9 +59,10 @@ FROM
 GROUP BY city
 ORDER BY customer_in_city DESC
 LIMIT 10;
+```
 
 #### 3. What is the distribution of orders based on deal size (Small, Medium, Large)?
-
+```SQL
 SELECT 
     COUNT(DISTINCT order_number) AS count_of_orders, dealsize
 FROM
@@ -70,9 +76,10 @@ SELECT country, COUNT(DISTINCT customer_name) AS number_of_customers
 FROM customers
 GROUP BY country
 ORDER BY number_of_customers DESC;
+```
 
 #### 5. Which country has the highest revenue generation based on sales?
-
+```SQL
 SELECT 
 	c.country, ROUND(SUM(p.sales), 2) AS total_sales
 FROM
@@ -82,38 +89,45 @@ FROM
 GROUP BY country
 ORDER BY total_sales DESC
 LIMIT 1;
-
+```
 
 ### ORDER AND SALES ANALYSIS
 
 #### 6. What is the overall total sales?
-
+```SQL
 SELECT
 	ROUND(SUM(sales),2) AS total_sales
 FROM 
 	products;
+```
 
 #### 7. What is the overall total orders?
+```SQL
 SELECT
 	COUNT(DISTINCT order_number) AS total_sales
     -- ROUND(SUM(quantity_ordered)) AS total_quantity_ordered
 FROM 
 	products;
+```
 
 #### 8. What is the overall total quantity ordered?
+```SQL
 SELECT
     SUM(quantity_ordered) AS total_quantity_ordered
 FROM 
 	products;
+```
 
 #### 9. What is the total numder of customers of the company?
+```SQL
 SELECT
 	COUNT(DISTINCT customer_name) AS total_customer
 FROM 
 	 customers;
+```
 
 #### 10. What is the total sales amount per customer?
-
+```SQL
 SELECT 
     c.customer_name, ROUND(SUM(p.sales), 2) AS total_sales
 FROM
@@ -122,9 +136,10 @@ FROM
     products p ON c.order_number = p.order_number
 GROUP BY customer_name
 ORDER BY total_sales DESC;
+```
 
 #### 11. What is the average order value (AOV) per customer?
-
+```SQL
 SELECT 
 	c.customer_name,
     ROUND(SUM(p.sales),2) AS total_sales,
@@ -135,6 +150,7 @@ FROM customers c
     products p ON c.order_number = p.order_number
 GROUP BY c.customer_name
 ORDER BY total_orders DESC;
+```
 
 #### 12. What number of orders are placed in each country?
 
