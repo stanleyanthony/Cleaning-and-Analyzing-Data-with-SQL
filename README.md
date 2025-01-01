@@ -1,10 +1,11 @@
 # Cleaning-and-Analyzing-Data-with-SQL
 Answering business questions by analyzing data with SQL 
 
-
+```SQL
 CREATE DATABASE autosales;
 
 USE autosales;
+```
 -----------------------------------------------
 
 ## SOME DATA CLEANING 
@@ -153,7 +154,7 @@ ORDER BY total_orders DESC;
 ```
 
 #### 12. What number of orders are placed in each country?
-
+```SQL
 SELECT c.country,
 	COUNT(DISTINCT p.order_number) AS number_of_orders
 FROM customers c 
@@ -161,9 +162,10 @@ FROM customers c
     products p ON c.order_number = p.order_number
 GROUP BY country
 ORDER BY number_of_orders DESC;
+```
 
 #### 13. Which customers contribute the most to total sales?
-
+```SQL
 SELECT 
 	customer_name,
 	ROUND(SUM(p.sales),2) AS total_sales
@@ -173,9 +175,10 @@ FROM customers c
 GROUP BY customer_name
 ORDER BY total_sales DESC
 LIMIT 10;
+```
 
 #### 14. What is the trend of sales over time (monthly)?
-
+```SQL
 SELECT 
 	YEAR(order_date) AS year,
     DATE_FORMAT(order_date, '%M %Y') AS month_name,
@@ -184,12 +187,12 @@ FROM
     products
 GROUP BY YEAR(order_date) , MONTH(order_date), month_name
 ORDER BY YEAR(order_date) , MONTH(order_date);
-
+```
 
 ### PRODUCT INSIGHT
 
 #### 15. What are the top 5 most sold products based on quantity?
-
+```SQL
 SELECT 
     product_code, 
     SUM(quantity_ordered) AS total_quantity
@@ -198,9 +201,10 @@ FROM
 GROUP BY product_code
 ORDER BY total_quantity DESC
 LIMIT 5;
-    
-#### 16. What is the total sales amount or revenue per each product line?
+```
 
+#### 16. What is the total sales amount or revenue per each product line?
+```SQL
 SELECT 
     product_line, 
     ROUND(SUM(sales),2) AS total_sales
@@ -208,18 +212,20 @@ FROM
     products
 GROUP BY product_line
 ORDER BY total_sales DESC;
+```
 
 #### 17. What is the average sales per product line?
-
+```SQL
 SELECT
 	product_line,
 	ROUND(AVG(sales),2) productline_average_sales
 FROM products
 GROUP BY product_line
 ORDER BY productline_average_sales DESC;
+```
 
 #### 18. What is the average sales per product line yearly?
-
+```SQL
 SELECT 
 	year(order_date) AS year_ordered,
 	product_line,
@@ -227,9 +233,10 @@ SELECT
 FROM products
 GROUP BY year_ordered, product_line
 ORDER BY year_ordered, productline_average_sales DESC;
+```
 
 #### 19. How does the manufacturer's suggested retail price (MSRP) compare to actual sales prices?✔
-
+```SQL
 SELECT 
 	product_code,
     man_suggested_retail_price,
@@ -239,17 +246,18 @@ SELECT
 FROM
     products
 GROUP BY product_code, man_suggested_retail_price;
+```
 
 #### 20. What is the average quantity ordered for each product line?✔
-
+```SQL
 SELECT
 	product_line,
     ROUND(AVG(quantity_ordered),2) AS average_quatity_ordered
 FROM products
 GROUP BY product_line
 ORDER BY average_quatity_ordered DESC;
-
-
+```
+```SQL
 /*SELECT
 	product_line,
     ROUND(SUM(quantity_ordered),2) AS sum_quatity_ordered,
@@ -257,30 +265,32 @@ ORDER BY average_quatity_ordered DESC;
 FROM products
 GROUP BY product_line
 ORDER BY sum_quatity_ordered DESC;*/
-
+```
 
 ### ORDER TRENDS
 
 #### 21. How does the frequency of orders change over time?
-
+```SQL
 SELECT
 	YEAR(order_date) AS order_year,
     COUNT(DISTINCT order_number) AS total_unique_orders
 FROM products
 GROUP BY YEAR(order_date)
 ORDER BY total_unique_orders DESC;
+```
 
 #### 22. Which order status are most common?
-
+```SQL
 SELECT
 	status,
     COUNT(status) AS status_count
 FROM products
 GROUP BY status
 ORDER BY status_count DESC;
+```
 
 #### 23. What is the percentage contribution of each product line to total sales?
-
+```SQL
 SELECT
 	product_line,
     ROUND(SUM(sales),2) AS total_sales,
@@ -314,9 +324,10 @@ FROM
     CROSS JOIN
     product_line_sales p 
 ORDER BY p.total_sales DESC;
+```
 
 #### 24. What is the total revenue per country, and how does it vary by region?
-
+```SQL
 SELECT
 	CASE
 		WHEN country IN ('USA', 'Canada') THEN 'North America'
@@ -341,6 +352,6 @@ Asia - Philipines, Japan, Singapore
 Oceania - Australia
 
  */
-
+```
 
 
