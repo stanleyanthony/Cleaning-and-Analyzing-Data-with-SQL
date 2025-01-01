@@ -10,8 +10,10 @@ USE autosales;
 ## SOME DATA CLEANING 
 
 -- updating column name
+```slq
 ALTER TABLE products
 RENAME COLUMN ï»¿order_number TO order_number;
+```
 
 -- convert text to date type
 ALTER TABLE products
