@@ -3,7 +3,8 @@ Answering business questions by analyzing data with SQL
 
 ```SQL
 CREATE DATABASE autosales;
-
+```
+```SQL
 USE autosales;
 ```
 -----------------------------------------------
