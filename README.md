@@ -10,7 +10,7 @@ USE autosales;
 ## SOME DATA CLEANING 
 
 -- updating column name
-```slq
+```SQL
 ALTER TABLE products
 RENAME COLUMN ï»¿order_number TO order_number;
 ```
