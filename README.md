@@ -93,7 +93,7 @@ ORDER BY total_sales DESC
 LIMIT 1;
 ```
 
-### ORDER AND SALES ANALYSIS
+### ORDER AND SALES ANALYSIS SESSION
 
 #### 6. What is the overall total sales?
 ```SQL
@@ -190,7 +190,7 @@ GROUP BY YEAR(order_date) , MONTH(order_date), month_name
 ORDER BY YEAR(order_date) , MONTH(order_date);
 ```
 
-### PRODUCT INSIGHT
+### PRODUCT INSIGHT SESSION
 
 #### 15. What are the top 5 most sold products based on quantity?
 ```SQL
@@ -268,7 +268,7 @@ GROUP BY product_line
 ORDER BY sum_quatity_ordered DESC;*/
 ```
 
-### ORDER TRENDS
+### ORDER TRENDS SESSION
 
 #### 21. How does the frequency of orders change over time?
 ```SQL
