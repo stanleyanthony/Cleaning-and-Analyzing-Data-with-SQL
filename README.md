@@ -63,7 +63,7 @@ ORDER BY customer_in_city DESC
 LIMIT 10;
 ```
 
-#### 3. What is the distribution of orders based on deal size (Small, Medium, Large)?
+#### 3. What is the distribution of orders based on deal size (Small, Medium, and Large)?
 ```SQL
 SELECT 
     COUNT(DISTINCT order_number) AS count_of_orders, dealsize
