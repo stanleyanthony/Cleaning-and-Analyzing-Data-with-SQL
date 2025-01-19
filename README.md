@@ -7,6 +7,7 @@ CREATE DATABASE autosales;
 ```SQL
 USE autosales;
 ```
+
 -----------------------------------------------
 
 ## SOME DATA CLEANING 
