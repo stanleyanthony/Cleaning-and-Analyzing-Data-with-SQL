@@ -6,7 +6,7 @@ CREATE DATABASE autosales;
 ```
 ### Data Source - Kaggle.com
 
-The data was downloaded from Kaggle and uploaded into the database autos ales.
+The data was downloaded from Kaggle and uploaded into the database autosales.
 
 ```SQL
 USE autosales;
