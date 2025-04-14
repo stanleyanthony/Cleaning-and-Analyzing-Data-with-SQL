@@ -5,6 +5,7 @@ Answering business questions by analyzing data with SQL
 CREATE DATABASE autosales;
 ```
 ### Data Source - Kaggle.com
+-- The data was downloaded from Kaggle and uploaded into the database autos ales.
 
 ```SQL
 USE autosales;
